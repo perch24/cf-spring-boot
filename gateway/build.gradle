@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.20'
+		kotlinVersion = '1.2.21'
 		springBootVersion = '1.5.9.RELEASE'
 	}
 	repositories {
@@ -47,6 +47,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator') // Add the /health, /info, /beans endpoints etc.
 
 	compile 'org.springframework.cloud:spring-cloud-starter-gateway'
+//	compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
