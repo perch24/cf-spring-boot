@@ -1,5 +1,0 @@
----
-applications:
-- name: cf-foo
-  buildpack: java_buildpack
-  path: build/libs/foo-0.0.1-SNAPSHOT.jar

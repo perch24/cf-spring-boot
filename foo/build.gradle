@@ -30,29 +30,46 @@ compileTestKotlin {
 
 repositories {
 	mavenCentral()
+	maven {
+		url "https://repo.spring.io/plugins-release"
+	}
 }
 
 
 ext {
 	springCloudVersion = 'Edgware.SR1'
+	pivotalCloudServicesVersion = '1.6.1.RELEASE'
 }
 
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-cloudfoundry-discovery')
-	compile('org.springframework.cloud:spring-cloud-starter-feign')
-	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
+	compile('org.springframework.boot:spring-boot-starter-web') // Standard Spring Boot stuff
+	compile('org.springframework.boot:spring-boot-starter-actuator') // Add the /health, /info, /beans endpoints etc.
+//	compile('org.springframework.cloud:spring-cloud-starter-sleuth') // Add the [Sleuth] logging libraries
+//	compile('org.springframework.cloud:spring-cloud-stream-binder-rabbit') // Add the [Sleuth] Rabbit messaging binder
+//	compile('org.springframework.cloud:spring-cloud-sleuth-zipkin-stream') // Add the [Sleuth] messaging stream feature
+
+//	compile('org.springframework.cloud:spring-cloud-cloudfoundry-discovery')
+//	compile('org.springframework.cloud:spring-cloud-starter-feign')
+//	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
 //	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
-	compile('org.flywaydb:flyway-core')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+//	compile('org.flywaydb:flyway-core')
+//	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+
+	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-config-client') // Add the [Config] server libraries
+	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-service-registry') // Add the [Registry] server libraries
+	compile('io.pivotal.spring.cloud:spring-cloud-services-starter-circuit-breaker') // Add the [Circuit Breaker] libraries
+
 	runtime('com.h2database:h2')
 	runtime('org.postgresql:postgresql')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${pivotalCloudServicesVersion}"
 	}
 }

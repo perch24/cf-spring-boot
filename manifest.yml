@@ -1,0 +1,9 @@
+---
+applications:
+  - name: foo-service
+    path: foo/build/libs/foo-0.0.1-SNAPSHOT.jar
+    memory: 1024M
+    services:
+      - config
+      - rabbit
+      - registry
