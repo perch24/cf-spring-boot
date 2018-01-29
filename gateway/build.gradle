@@ -38,7 +38,7 @@ repositories {
 
 ext {
 	springCloudVersion = 'Edgware.SR1'
-	springGatewayVersion = '2.0.5.M5'
+	springGatewayVersion = '2.0.0.M5'
 	pivotalCloudServicesVersion = '1.6.1.RELEASE'
 }
 
